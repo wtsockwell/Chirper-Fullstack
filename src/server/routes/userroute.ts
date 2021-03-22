@@ -28,4 +28,24 @@ router.post('/', async (req,res)=>{
     }
 })
 
+router.put('/:id', async (req,res)=>{
+    let newUser = req.body
+    try {
+        res.json(await db.users.updateuser(req.params.id, newUser.name, newUser.email))
+    } catch (err) {
+        console.log(err)
+        res.sendStatus(500)
+    }
+})
+
+router.delete('/:id', async (req,res)=>{
+    let id:string = req.params.id
+    try {
+        res.json(await db.users.deleteuser(id))
+    } catch (err) {
+        console.log(err)
+        res.sendStatus(500)
+    }
+})
+
 export default router

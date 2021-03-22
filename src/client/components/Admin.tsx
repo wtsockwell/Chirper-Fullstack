@@ -7,6 +7,7 @@ const Admin: React.FC<AdminProps> = ({ history, match: { params: { id } } }) => 
 
     const [user, setUser] = useState("")
     const [message, setMessage] = useState("")
+    const [location, setLocation] = useState("")
 
     const getChirps = async () => {
         let r = await fetch(`/api/chirps/${id}`)
@@ -25,6 +26,9 @@ const Admin: React.FC<AdminProps> = ({ history, match: { params: { id } } }) => 
     }
     const handleMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setMessage(e.target.value)
+    }
+    const handleLocation = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setLocation(e.target.value)
     }
 
     const handleEdit = (e: React.FormEvent<HTMLButtonElement>) => {
@@ -69,6 +73,8 @@ const Admin: React.FC<AdminProps> = ({ history, match: { params: { id } } }) => 
                     <input type="text" name="" id="user" value={user} onChange={handleUser} className="form-control" />
                     <label htmlFor="message" className="my-2">What'dya mess up?</label>
                     <textarea name="" id="message" cols={30} rows={10} value={message} onChange={handleMessage} className="form-control my-2"></textarea>
+                    <label htmlFor="location">Where are you from?</label>
+                    <input type="text" name="" id="location" value={location} onChange={handleLocation} className="form-control" />
                     <button onClick={handleEdit} className="btn btn-info mx-1">Save</button>
                     <button onClick={handleDelete} className="btn btn-danger mx-1">Delete</button>
                 </div>
