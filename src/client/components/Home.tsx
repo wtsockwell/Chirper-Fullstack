@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 interface chirpsProps { }
 interface chirps {
     id: number,
-    username: string,
-    message: string
+    userid: string,
+    content: string
 }
 
 const Home: React.FC<chirpsProps> = (props) => {
@@ -38,9 +38,9 @@ const Home: React.FC<chirpsProps> = (props) => {
                     <div key={chirp.id} className="">
                         <div className="card my-2">
                             <div className="card-body">
-                                <h4 className="card-title">{chirp.username}</h4>
+                                <h4 className="card-title">{chirp.userid} </h4>
                                 <p className="card-text">
-                                    {chirp.message}
+                                    {chirp.content}
                                 </p>
                                 <Link to={`/api/chirps/${chirp.id}/Admin`} className="btn btn-primary float-right">Admin Options</Link>
                             </div>

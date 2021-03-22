@@ -1,5 +1,5 @@
 import * as express from 'express';
-import apiRouter from './routes';
+import apiRouter from './routes/chirproute';
 import * as path from 'path'
 
 const app = express();

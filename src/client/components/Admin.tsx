@@ -11,8 +11,8 @@ const Admin: React.FC<AdminProps> = ({ history, match: { params: { id } } }) => 
     const getChirps = async () => {
         let r = await fetch(`/api/chirps/${id}`)
         let chirp = await r.json()
-        setUser(chirp.username)
-        setMessage(chirp.message)
+        setUser(chirp.userid)
+        setMessage(chirp.content)
     }
 
     useEffect(() => {
