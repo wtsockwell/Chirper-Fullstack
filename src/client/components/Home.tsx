@@ -30,7 +30,7 @@ const Home: React.FC<chirpsProps> = (props) => {
         <div>
             <div className="jumbostron d-flex align-items-center flex-column">
                 <h1 className="display-3">Home Page</h1>
-                <Link to="/user" className="btn btn-primary ">Make a new Post</Link>
+                <Link to="/form" className="btn btn-primary ">Make a new Post</Link>
             </div>
             <div className="container mt-3">
 
