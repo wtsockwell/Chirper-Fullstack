@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Admin from './components/Admin';
 import Form from './components/Form';
-import Home from './components/Home'
+import Home from './components/Home';
+import UserForm from './components/UserForm'
 
 const App = (props: AppProps) => {
 
@@ -12,6 +13,7 @@ const App = (props: AppProps) => {
 			<Switch>
 				<Route exact path="/" component={Home}/>
 				<Route exact path="/form" component={Form}/>
+				<Route exact path="/user" component={UserForm}/>
 				<Route exact path="/api/chirps/:id?/Admin" component={Admin}/>
 			</Switch>
 		</BrowserRouter>

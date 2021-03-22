@@ -1,9 +1,10 @@
 import * as express from 'express';
-import chirpsRouter from '../chirps';
-import dbrouter from './chirproute'
+import chirproute from './chirproute'
+import userroute from './userroute'
 
 const router = express.Router();
 
-router.use('/chirps', dbrouter)
+router.use('/chirps', chirproute)
+router.use('/user', userroute)
 
 export default router;

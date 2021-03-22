@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useState, useEffect } from 'react'
-import { RouteComponentProps } from 'react-router-dom'
+import { RouteComponentProps, Link, useHistory } from 'react-router-dom'
+
 
 interface UserFormprops  extends RouteComponentProps { }
 
@@ -8,24 +9,23 @@ const UserForm: React.FC<UserFormprops> = ({ history }) => {
     const [user, setUser] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const newHistory = useHistory();
 
     const handleUser = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUser(e.target.value)
     }
 
-    const handleEmail = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value)
     }
-    const handlePassword = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value)
     }
 
-    const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        sendChirp()
-        setUser("")
-        setEmail("")
-        setPassword("")
+        sendUser()
+        newHistory.push('/form')
     }
 
     const handleReturn = (e: React.FormEvent<HTMLButtonElement>) => {
@@ -33,18 +33,18 @@ const UserForm: React.FC<UserFormprops> = ({ history }) => {
         history.goBack()
     }
 
-    const sendChirp = async () => {
-        let chirp = {
+    const sendUser = async () => {
+        let users = {
             name: user,
             email: email,
             password: password
         }
-        let r = await fetch('/api/chirps', {
+        let r = await fetch('/api/user', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(chirp)
+            body: JSON.stringify(users)
         })
     }
 
@@ -59,13 +59,13 @@ const UserForm: React.FC<UserFormprops> = ({ history }) => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="email">email</label>
-                    <input type="email" name="" id="username" onChange={handleUser} value={user} className="form-control" />
+                    <input type="email" name="" id="email" onChange={handleEmail} value={email} className="form-control" />
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">password</label>
-                    <input type="password" name="" id="username" onChange={handleUser} value={user} className="form-control" />
+                    <input type="password" name="" id="password" onChange={handlePassword} value={password} className="form-control" />
                 </div>
-                <button onClick={handleSubmit} className="btn btn-primary mx-1">Submit</button>
+                <button className="btn btn-primary mx-1" onClick={handleSubmit}>Submit</button>
                 <button onClick={handleReturn} className="btn btn-secondary mx-1">Go back</button>
                 </div>
             </form>

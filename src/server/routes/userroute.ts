@@ -11,7 +11,6 @@ router.get('/:id?',async (req,res) => {
         } else{
             res.json(await db.users.all())
         }
-        // res.json(await chirps.chirps.all())
     } catch (err) {
         console.log(err)
         res.sendStatus(500)
@@ -21,7 +20,7 @@ router.get('/:id?',async (req,res) => {
 router.post('/', async (req,res)=>{
     let user = req.body
     try{
-        const userRes = await db.users.createuser(user.name,user.email,user.passwrod)
+        const userRes = await db.users.createuser(user.name,user.email,user.password)
         res.json(userRes)
     } catch (err) {
         console.log(err)

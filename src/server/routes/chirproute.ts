@@ -1,5 +1,4 @@
 import * as express from 'express';
-import chirpstore from '../../../chirpstore';
 import db from '../db/connection'
 
 const router = express.Router();
@@ -12,7 +11,6 @@ router.get('/:id?',async (req,res) => {
         } else{
             res.json(await db.chirps.all())
         }
-        // res.json(await chirps.chirps.all())
     } catch (err) {
         console.log(err)
         res.sendStatus(500)
