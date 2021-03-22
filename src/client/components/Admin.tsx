@@ -40,7 +40,7 @@ const Admin: React.FC<AdminProps> = ({ history, match: { params: { id } } }) => 
     const handleEdit = (e: React.FormEvent<HTMLButtonElement>) => {
         e.preventDefault()
         updateChirp()
-        history.push('/')
+        
     }
     const handleDelete = (e: React.FormEvent<HTMLButtonElement>) => {
         e.preventDefault()
@@ -76,6 +76,7 @@ const Admin: React.FC<AdminProps> = ({ history, match: { params: { id } } }) => 
                 },
                 body: JSON.stringify(chirp)
             })
+            history.push('/')
         }catch (err){
             console.log(err)
         }
