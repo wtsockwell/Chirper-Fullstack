@@ -31,7 +31,7 @@ router.post('/', async (req,res)=>{
 router.put('/:id', async (req,res)=>{
     let newUser = req.body
     try {
-        res.json(await db.users.updateuser(req.params.id, newUser.name, newUser.email))
+        res.json(await db.users.updateuser(req.params.id, newUser.name, newUser.email, newUser.password))
     } catch (err) {
         console.log(err)
         res.sendStatus(500)

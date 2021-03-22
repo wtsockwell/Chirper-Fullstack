@@ -3,21 +3,23 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Admin from './components/Admin';
 import Form from './components/Form';
 import Home from './components/Home';
+import UserAdmin from './components/UserForm'
 
 const App = (props: AppProps) => {
 
 	return (
 		<BrowserRouter>
 			<Switch>
-				<Route exact path="/" component={Home}/>
-				<Route exact path="/form" component={Form}/>
-				<Route exact path="/api/chirps/:id?/Admin" component={Admin}/>
+				<Route exact path="/" component={Home} />
+				<Route exact path="/form" component={Form} />
+				<Route exact path="/api/user/:id?/Admin" component={UserAdmin} />
+				<Route exact path="/api/chirps/:id?/Admin" component={Admin} />
 			</Switch>
 		</BrowserRouter>
 	);
 }
 
-interface AppProps {}
+interface AppProps { }
 
 export default App;
 // class App extends React.Component<IAppProps, IAppState> {

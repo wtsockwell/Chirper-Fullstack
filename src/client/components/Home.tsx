@@ -1,12 +1,17 @@
 import * as React from 'react'
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 interface chirpsProps { }
 interface chirps {
     id: number,
     userid: string,
-    content: string
+    content: string,
+    user:string
+}
+
+interface users {
+    id: number
 }
 
 const Home: React.FC<chirpsProps> = (props) => {
@@ -19,10 +24,6 @@ const Home: React.FC<chirpsProps> = (props) => {
         setChirps(chirp)
     }
 
-    const handleClick = (e: React.FormEvent<HTMLButtonElement>) => {
-        e.preventDefault()
-
-    }
 
     useEffect(() => { getChirps(); }, [])
 
@@ -43,6 +44,7 @@ const Home: React.FC<chirpsProps> = (props) => {
                                     {chirp.content}
                                 </p>
                                 <Link to={`/api/chirps/${chirp.id}/Admin`} className="btn btn-primary float-right">Admin Options</Link>
+                                <Link to={`/api/user/${chirp.user}/Admin`} className="btn btn-primary mx-1"> User Admin Page</Link>
                             </div>
                         </div>
                     </div>
